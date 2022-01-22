@@ -1,27 +1,33 @@
-const headerLinks = document.querySelectorAll(".header-menu__item a");
-const linkCharacteristics = document.querySelector('.card-details__link-characteristics');
+const scrollFunc = () => {
+  const headerLinks = document.querySelectorAll(".header-menu__item a");
+  const linkCharacteristics = document.querySelector(
+    ".card-details__link-characteristics"
+  );
 
-seamless.polyfill();
+  seamless.polyfill();
 
-headerLinks.forEach((element) => {
-  element.addEventListener("click", (evt) => {
-    evt.preventDefault();
-    smoothScroll(element);
+  headerLinks.forEach((element) => {
+    element.addEventListener("click", (evt) => {
+      evt.preventDefault();
+      smoothScroll(element);
+    });
   });
-});
 
-linkCharacteristics.addEventListener('click', (evt) => {
-  evt.preventDefault();
-  smoothScroll(linkCharacteristics);
-})
+  linkCharacteristics.addEventListener("click", (evt) => {
+    evt.preventDefault();
+    smoothScroll(linkCharacteristics);
+  });
 
-let smoothScroll = function(element) {
-  const id = element.getAttribute("href").substring(1);
+  let smoothScroll = function (element) {
+    const id = element.getAttribute("href").substring(1);
     const section = document.getElementById(id);
-    if(section) {
+    if (section) {
       seamless.elementScrollIntoView(section, {
-        behavior: 'smooth',
-        block: 'start'
-      })
-    } 
-}
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+};
+
+scrollFunc()
